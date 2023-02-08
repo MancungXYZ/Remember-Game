@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import SingleCard from './components/SingleCard';
+import sound from "./assets/benar.mp3"
+// import Swal from 'sweetalert2';
 
 const cardImages = [
   { "src": "/img/helmet-1.png",matched: false},
@@ -8,7 +10,9 @@ const cardImages = [
   { "src": "/img/ring-1.png",matched: false},
   { "src": "/img/scroll-1.png",matched: false},
   { "src": "/img/shield-1.png",matched: false},
-  { "src": "/img/sword-1.png",matched: false}
+  { "src": "/img/sword-1.png",matched: false},
+  { "src": "/img/books-1.png",matched: false},
+  { "src": "/img/meong-1.png",matched: false}
 ]
 
 function App() {
@@ -36,13 +40,21 @@ function App() {
     choiceOne ? setChoiceTwo(card) : setChoiceOne(card)
   }
 
+  //suara benar
+  const benarSuara = () => {
+    new Audio(sound).play()
+  }
+
+  //compare
   useEffect(() => {
     if (choiceOne && choiceTwo) {
       setDisable(true)
       if (choiceOne.src === choiceTwo.src) {
+        benarSuara()
         setCards(prevCards => {
           return prevCards.map(card => {
             if (card.src === choiceOne.src) {
+              console.log({...card, matched: true})
               return{...card, matched: true}
             } else {
               return card
@@ -55,9 +67,17 @@ function App() {
         setTimeout(() => resetTurn(), 1000)
       }
     }
+    // if (cards.every(item => item.matched === true)) {
+    //   Swal.fire({
+    //     position: 'top-end',
+    //     icon: 'success',
+    //     title: 'Selamat anda berhasil',
+    //     showConfirmButton: false,
+    //     timer: 1500
+    //   })
+    // }
   }, [choiceOne, choiceTwo])
 
-  console.log(cards)
 
   //reset pilihan
   const resetTurn = () => {
@@ -75,7 +95,6 @@ function App() {
     <div className="App">
       <h1>Game Mengingat</h1>
       <button onClick={shuffleCards}>Permainan Baru</button>
-
       <div className='card-grid'>
         {cards.map(card => (
           <SingleCard key={card.id} card={card} handleChoice={handleChoice}
