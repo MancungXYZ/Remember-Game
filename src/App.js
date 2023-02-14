@@ -5,13 +5,13 @@ import sound from "./assets/benar.mp3"
 // import Swal from 'sweetalert2';
 
 const cardImages = [
-  { "src": "/img/helmet-1.png",matched: false},
-  { "src": "/img/potion-1.png",matched: false},
-  { "src": "/img/ring-1.png",matched: false},
-  { "src": "/img/scroll-1.png",matched: false},
-  { "src": "/img/shield-1.png",matched: false},
-  { "src": "/img/sword-1.png",matched: false},
-  { "src": "/img/books-1.png",matched: false},
+  { "src": "/img/ayam-1.png",matched: false},
+  { "src": "/img/buaya-1.jpg",matched: false},
+  { "src": "/img/burung-1.png",matched: false},
+  { "src": "/img/panda-1.jpg",matched: false},
+  { "src": "/img/sapi-1.png",matched: false},
+  { "src": "/img/macan.jpg",matched: false},
+  { "src": "/img/masbro-1.jpeg",matched: false},
   { "src": "/img/meong-1.png",matched: false}
 ]
 
